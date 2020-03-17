@@ -320,6 +320,7 @@ script = ExtResource( 15 )
 position = Vector2( -5.45547, 0 )
 frames = SubResource( 1 )
 animation = "Idle sword"
+frame = 1
 __meta__ = {
 "_edit_group_": true
 }
@@ -343,7 +344,7 @@ position = Vector2( 11, 28 )
 z_index = -1
 frames = SubResource( 22 )
 animation = "Attack"
-frame = 3
+frame = 6
 offset = Vector2( 63.9, -13.5544 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite/Arm"]
