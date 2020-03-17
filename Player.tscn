@@ -1,0 +1,280 @@
+[gd_scene load_steps=37 format=2]
+
+[ext_resource path="res://sprites/orange/orange_idle0.png" type="Texture" id=1]
+[ext_resource path="res://sprites/orange/orange_idle1.png" type="Texture" id=2]
+[ext_resource path="res://sprites/orange/orange_sword_idle0.png" type="Texture" id=3]
+[ext_resource path="res://sprites/orange/orange_sword_idle1.png" type="Texture" id=4]
+[ext_resource path="res://sprites/orange/orange_sword_walk0.png" type="Texture" id=5]
+[ext_resource path="res://sprites/orange/orange_draw0.png" type="Texture" id=6]
+[ext_resource path="res://sprites/orange/orange_draw3.png" type="Texture" id=7]
+[ext_resource path="res://sprites/orange/orange_draw5.png" type="Texture" id=8]
+[ext_resource path="res://sprites/orange/orange_draw4.png" type="Texture" id=9]
+[ext_resource path="res://sprites/orange/orange_sword_walk1.png" type="Texture" id=10]
+[ext_resource path="res://sprites/orange/orange_sword_walk2.png" type="Texture" id=11]
+[ext_resource path="res://sprites/orange/orange_sword_walk3.png" type="Texture" id=12]
+[ext_resource path="res://sprites/orange/orange_draw1.png" type="Texture" id=13]
+[ext_resource path="res://sprites/orange/orange_draw2.png" type="Texture" id=14]
+[ext_resource path="res://Player.gd" type="Script" id=15]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": false,
+"name": "Idle sword",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 8 ) ],
+"loop": false,
+"name": "Draw sword",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
+"loop": false,
+"name": "Idle",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": false,
+"name": "Sword walk",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 6 ) ],
+"loop": false,
+"name": "Sheathe sword",
+"speed": 1.0
+} ]
+
+[sub_resource type="Animation" id=2]
+resource_name = "Draw sword"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "Draw sword", "Draw sword" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.01, 0.03, 0.05, 0.07 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4, 5 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Idle"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Idle" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Idle sword"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Idle sword" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Sheathe sword"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Sheathe sword" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.19, 0.28, 0.37 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Sword walk" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 1, 2 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "Draw sword"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "Idle sword"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "Sheathe sword"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "Sword walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+advance_condition = "Sword"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+switch_mode = 2
+advance_condition = "Idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+advance_condition = "Sword"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=19]
+"states/Draw sword/node" = SubResource( 7 )
+"states/Draw sword/position" = Vector2( 390, 22 )
+states/Idle/node = SubResource( 9 )
+states/Idle/position = Vector2( 214, 38 )
+"states/Idle sword/node" = SubResource( 8 )
+"states/Idle sword/position" = Vector2( 372, 212 )
+"states/Sheathe sword/node" = SubResource( 10 )
+"states/Sheathe sword/position" = Vector2( 149, 142 )
+"states/Sword walk/node" = SubResource( 11 )
+"states/Sword walk/position" = Vector2( 568, 93 )
+transitions = [ "Idle sword", "Sheathe sword", SubResource( 12 ), "Sheathe sword", "Idle", SubResource( 13 ), "Sword walk", "Idle sword", SubResource( 14 ), "Idle sword", "Sword walk", SubResource( 15 ), "Idle", "Draw sword", SubResource( 16 ), "Draw sword", "Sword walk", SubResource( 17 ), "Draw sword", "Idle sword", SubResource( 18 ) ]
+start_node = "Idle"
+graph_offset = Vector2( -13, -29 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=20]
+
+[sub_resource type="RectangleShape2D" id=21]
+extents = Vector2( 39.1967, 124.631 )
+
+[node name="Player" type="KinematicBody2D"]
+script = ExtResource( 15 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -3, 0 )
+frames = SubResource( 1 )
+animation = "Idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite"]
+"anims/Draw sword" = SubResource( 2 )
+anims/Idle = SubResource( 3 )
+"anims/Idle sword" = SubResource( 4 )
+"anims/Sheathe sword" = SubResource( 5 )
+"anims/Sword walk" = SubResource( 6 )
+
+[node name="AnimationTree" type="AnimationTree" parent="AnimatedSprite"]
+tree_root = SubResource( 19 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 20 )
+parameters/conditions/Idle = false
+parameters/conditions/Sword = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( -24.6066, 75.8702 )
+shape = SubResource( 21 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
