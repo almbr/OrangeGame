@@ -56,8 +56,9 @@ func _process(delta):
 	var angle_diff = angle - $AnimatedSprite/Arm.rotation_degrees - 180
 	$AnimatedSprite/Arm.rotation_degrees += angle_diff
 	
+	print(angle)
 	### H flip ###
-	if (angle > -90) and (angle < 90) and ($AnimatedSprite.flip_h == false):
+	if (angle > -80) and (angle < 80) and ($AnimatedSprite.flip_h == false):
 		$AnimatedSprite.flip_h = true
 		$AnimatedSprite/Arm.flip_v = true
 		$AnimatedSprite/Arm.position -= Vector2(pixel_width, 0)

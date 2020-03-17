@@ -343,7 +343,7 @@ position = Vector2( 11, 28 )
 z_index = -1
 frames = SubResource( 22 )
 animation = "Attack"
-frame = 6
+frame = 3
 offset = Vector2( 63.9, -13.5544 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite/Arm"]
