@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://sprites/orange/orange_idle0.png" type="Texture" id=1]
 [ext_resource path="res://sprites/orange/orange_idle1.png" type="Texture" id=2]
@@ -20,6 +20,8 @@
 [ext_resource path="res://sprites/orange/orange_arm2.png" type="Texture" id=18]
 [ext_resource path="res://sprites/orange/orange_arm3.png" type="Texture" id=19]
 [ext_resource path="res://sprites/orange/orange_arm4.png" type="Texture" id=20]
+[ext_resource path="res://audio/footstep.wav" type="AudioStream" id=21]
+[ext_resource path="res://audio/knifeSlice.wav" type="AudioStream" id=22]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -169,28 +171,40 @@ tracks/1/keys = {
 length = 0.7
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:animation")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ "Sword walk" ]
+"values": [ 0, 1, 1, 2 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:frame")
+tracks/1/path = NodePath("footstep:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 0, 1, 1, 2 ]
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Sword walk" ]
 }
 
 [sub_resource type="AnimationNodeAnimation" id=8]
@@ -258,6 +272,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("slice:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=24]
 resource_name = "Idle"
@@ -320,7 +346,6 @@ script = ExtResource( 15 )
 position = Vector2( -5.45547, 0 )
 frames = SubResource( 1 )
 animation = "Idle sword"
-frame = 1
 __meta__ = {
 "_edit_group_": true
 }
@@ -339,12 +364,15 @@ active = true
 parameters/playback = SubResource( 20 )
 parameters/conditions/Idle = false
 
+[node name="footstep" type="AudioStreamPlayer2D" parent="AnimatedSprite"]
+stream = ExtResource( 21 )
+volume_db = -20.272
+
 [node name="Arm" type="AnimatedSprite" parent="AnimatedSprite"]
 position = Vector2( 11, 28 )
 z_index = -1
 frames = SubResource( 22 )
-animation = "Attack"
-frame = 6
+animation = "Idle"
 offset = Vector2( 63.9, -13.5544 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite/Arm"]
@@ -356,6 +384,10 @@ tree_root = SubResource( 29 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 30 )
+
+[node name="slice" type="AudioStreamPlayer2D" parent="AnimatedSprite/Arm"]
+stream = ExtResource( 22 )
+volume_db = -20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
